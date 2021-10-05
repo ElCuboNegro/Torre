@@ -1,7 +1,7 @@
 # Changelog
 
-## Version 0.1 (development)
+## Version 0.01 (development)
 
-- Feature A added
-- FIX: nasty bug #1729 fixed
-- add your changes here!
+- Putup project
+- Add configuration files
+- Setup src structure

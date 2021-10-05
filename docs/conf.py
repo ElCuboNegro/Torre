@@ -28,31 +28,31 @@ sys.path.insert(0, os.path.join(__location__, "../src"))
 # setup.py install" in the RTD Advanced Settings.
 # Additionally it helps us to avoid running apidoc manually
 
-try:  # for Sphinx >= 1.7
-    from sphinx.ext import apidoc
+try:    # for Sphinx >= 1.7
+  from sphinx.ext import apidoc
 except ImportError:
-    from sphinx import apidoc
+  from sphinx import apidoc
 
 output_dir = os.path.join(__location__, "api")
 module_dir = os.path.join(__location__, "../src/Torrex")
 try:
-    shutil.rmtree(output_dir)
+  shutil.rmtree(output_dir)
 except FileNotFoundError:
-    pass
+  pass
 
 try:
-    import sphinx
+  import sphinx
 
-    cmd_line = f"sphinx-apidoc --implicit-namespaces -f -o {output_dir} {module_dir}"
+  cmd_line = f"sphinx-apidoc --implicit-namespaces -f -o {output_dir} {module_dir}"
 
-    args = cmd_line.split(" ")
-    if tuple(sphinx.__version__.split(".")) >= ("1", "7"):
-        # This is a rudimentary parse_version to avoid external dependencies
-        args = args[1:]
+  args = cmd_line.split(" ")
+  if tuple(sphinx.__version__.split(".")) >= ("1", "7"):
+    # This is a rudimentary parse_version to avoid external dependencies
+    args = args[1:]
 
-    apidoc.main(args)
+  apidoc.main(args)
 except Exception as e:
-    print("Running `sphinx-apidoc` failed!\n{}".format(e))
+  print("Running `sphinx-apidoc` failed!\n{}".format(e))
 
 # -- General configuration ---------------------------------------------------
 
@@ -81,18 +81,18 @@ templates_path = ["_templates"]
 # Configure AutoStructify
 # https://recommonmark.readthedocs.io/en/latest/auto_structify.html
 def setup(app):
-    from recommonmark.transform import AutoStructify
+  from recommonmark.transform import AutoStructify
 
-    params = {
-        "enable_auto_toc_tree": True,
-        "auto_toc_tree_section": "Contents",
-        "auto_toc_maxdepth": 2,
-        "enable_eval_rst": True,
-        "enable_math": True,
-        "enable_inline_math": True,
-    }
-    app.add_config_value("recommonmark_config", params, True)
-    app.add_transform(AutoStructify)
+  params = {
+      "enable_auto_toc_tree": True,
+      "auto_toc_tree_section": "Contents",
+      "auto_toc_maxdepth": 2,
+      "enable_eval_rst": True,
+      "enable_math": True,
+      "enable_inline_math": True,
+  }
+  app.add_config_value("recommonmark_config", params, True)
+  app.add_transform(AutoStructify)
 
 
 # Enable markdown
@@ -120,12 +120,13 @@ copyright = "2021, Juan Jose Alban"
 # If you don’t need the separation provided between version and release,
 # just set them both to the same value.
 try:
-    from Torrex import __version__ as version
+  from Torrex import __version__ as version
 except ImportError:
-    version = ""
+  version = ""
 
 if not version or version.lower() == "unknown":
-    version = os.getenv("READTHEDOCS_VERSION", "unknown")  # automatically set by RTD
+  version = os.getenv("READTHEDOCS_VERSION",
+                      "unknown")    # automatically set by RTD
 
 release = version
 
@@ -169,7 +170,6 @@ pygments_style = "sphinx"
 # If this is True, todo emits a warning for each TODO entries. The default is False.
 todo_emit_warnings = True
 
-
 # -- Options for HTML output -------------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
@@ -179,10 +179,7 @@ html_theme = "alabaster"
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
-html_theme_options = {
-    "sidebar_width": "300px",
-    "page_width": "1200px"
-}
+html_theme_options = {"sidebar_width": "300px", "page_width": "1200px"}
 
 # Add any paths that contain custom themes here, relative to this directory.
 # html_theme_path = []
@@ -252,7 +249,6 @@ html_static_path = ["_static"]
 # Output file base name for HTML help builder.
 htmlhelp_basename = "Torrex-doc"
 
-
 # -- Options for LaTeX output ------------------------------------------------
 
 latex_elements = {
@@ -266,9 +262,8 @@ latex_elements = {
 
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
-latex_documents = [
-    ("index", "user_guide.tex", "Torrex Documentation", "Juan Jose Alban", "manual")
-]
+latex_documents = [("index", "user_guide.tex", "Torrex Documentation",
+                    "Juan Jose Alban", "manual")]
 
 # The name of an image file (relative to this directory) to place at the top of
 # the title page.
