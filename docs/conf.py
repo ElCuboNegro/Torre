@@ -277,13 +277,13 @@ latex_documents = [("index", "user_guide.tex", "Torrex Documentation",
 # latex_show_pagerefs = False
 
 # If true, show URL addresses after external links.
-# latex_show_urls = False
+latex_show_urls = False
 
 # Documents to append as an appendix to all manuals.
-# latex_appendices = []
+latex_appendices = []
 
 # If false, no module index is generated.
-# latex_domain_indices = True
+latex_domain_indices = True
 
 # -- External mapping --------------------------------------------------------
 python_version = ".".join(map(str, sys.version_info[0:2]))
